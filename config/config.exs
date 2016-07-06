@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :vagrant,
-  ecto_repos: [Vagrant.Repo]
+config :giftrap,
+  ecto_repos: [Giftrap.Repo]
 
 # Configures the endpoint
-config :vagrant, Vagrant.Endpoint,
+config :giftrap, Giftrap.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0SMnYEMKtjPvdvZpEyLlRYB5gpIHNpJ2na9wQ3caWbizuauqEcX92rWeDCMsdx2s",
-  render_errors: [view: Vagrant.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Vagrant.PubSub,
+  render_errors: [view: Giftrap.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Giftrap.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

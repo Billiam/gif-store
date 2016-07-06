@@ -1,4 +1,4 @@
-# Vagrant
+# Giftrap
 
 To start your Phoenix app:
 

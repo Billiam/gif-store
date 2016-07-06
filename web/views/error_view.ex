@@ -1,5 +1,5 @@
-defmodule Vagrant.ErrorView do
-  use Vagrant.Web, :view
+defmodule Giftrap.ErrorView do
+  use Giftrap.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

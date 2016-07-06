@@ -1,3 +1,3 @@
-defmodule Vagrant.LayoutViewTest do
-  use Vagrant.ConnCase, async: true
+defmodule Giftrap.LayoutViewTest do
+  use Giftrap.ConnCase, async: true
 end

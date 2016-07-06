@@ -1,4 +1,4 @@
-defmodule Vagrant.ChannelCase do
+defmodule Giftrap.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule Vagrant.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Vagrant.Repo
+      alias Giftrap.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint Vagrant.Endpoint
+      @endpoint Giftrap.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Vagrant.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Giftrap.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Vagrant.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Giftrap.Repo, {:shared, self()})
     end
 
     :ok

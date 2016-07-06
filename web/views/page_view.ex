@@ -1,3 +1,3 @@
-defmodule Vagrant.PageView do
-  use Vagrant.Web, :view
+defmodule Giftrap.PageView do
+  use Giftrap.Web, :view
 end

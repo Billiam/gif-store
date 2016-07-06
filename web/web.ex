@@ -1,12 +1,12 @@
-defmodule Vagrant.Web do
+defmodule Giftrap.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Vagrant.Web, :controller
-      use Vagrant.Web, :view
+      use Giftrap.Web, :controller
+      use Giftrap.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule Vagrant.Web do
     quote do
       use Phoenix.Controller
 
-      alias Vagrant.Repo
+      alias Giftrap.Repo
       import Ecto
       import Ecto.Query
 
-      import Vagrant.Router.Helpers
-      import Vagrant.Gettext
+      import Giftrap.Router.Helpers
+      import Giftrap.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule Vagrant.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Vagrant.Router.Helpers
-      import Vagrant.ErrorHelpers
-      import Vagrant.Gettext
+      import Giftrap.Router.Helpers
+      import Giftrap.ErrorHelpers
+      import Giftrap.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule Vagrant.Web do
     quote do
       use Phoenix.Channel
 
-      alias Vagrant.Repo
+      alias Giftrap.Repo
       import Ecto
       import Ecto.Query
-      import Vagrant.Gettext
+      import Giftrap.Gettext
     end
   end
 

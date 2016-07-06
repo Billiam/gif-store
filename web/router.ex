@@ -1,5 +1,5 @@
-defmodule Vagrant.Router do
-  use Vagrant.Web, :router
+defmodule Giftrap.Router do
+  use Giftrap.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule Vagrant.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Vagrant do
+  scope "/", Giftrap do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Vagrant do
+  # scope "/api", Giftrap do
   #   pipe_through :api
   # end
 end

@@ -1,4 +1,4 @@
-defmodule Vagrant.ConnCase do
+defmodule Giftrap.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule Vagrant.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias Vagrant.Repo
+      alias Giftrap.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import Vagrant.Router.Helpers
+      import Giftrap.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Vagrant.Endpoint
+      @endpoint Giftrap.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Vagrant.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Giftrap.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Vagrant.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Giftrap.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

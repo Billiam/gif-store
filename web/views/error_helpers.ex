@@ -1,4 +1,4 @@
-defmodule Vagrant.ErrorHelpers do
+defmodule Giftrap.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule Vagrant.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Vagrant.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Giftrap.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Vagrant.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Giftrap.Gettext, "errors", msg, opts)
     end
   end
 end

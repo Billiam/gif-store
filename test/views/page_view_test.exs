@@ -1,3 +1,3 @@
-defmodule Vagrant.PageViewTest do
-  use Vagrant.ConnCase, async: true
+defmodule Giftrap.PageViewTest do
+  use Giftrap.ConnCase, async: true
 end

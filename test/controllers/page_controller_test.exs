@@ -1,5 +1,5 @@
-defmodule Vagrant.PageControllerTest do
-  use Vagrant.ConnCase
+defmodule Giftrap.PageControllerTest do
+  use Giftrap.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

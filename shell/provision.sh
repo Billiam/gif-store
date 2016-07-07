@@ -7,10 +7,10 @@ apt-get -f install
 apt-get install -y build-essential git libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf
 apt-get install -y esl-erlang elixir
 mkdir -p /home/vagrant/bin
-chown -r vagrant:vagrant /home/vagrant/bin
-echo 'EXPORT PATH=$HOME/bin:$PATH' >> /home/vagrant/.bashrc
+chown -R vagrant:vagrant /home/vagrant/bin
+echo 'export PATH=$HOME/bin:$PATH' >> /home/vagrant/.bashrc
 
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 apt-get -y install postgresql postgresql-client

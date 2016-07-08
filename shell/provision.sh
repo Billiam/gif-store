@@ -13,7 +13,10 @@ echo 'export PATH=$HOME/bin:$PATH' >> /home/vagrant/.bashrc
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-apt-get -y install postgresql postgresql-client
+add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
+wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - 
+apt-get update
+apt-get -y install postgresql-9.4 postgresql-client-9.4
 
 su - postgres -c "createuser vagrant && psql -c \"ALTER user vagrant WITH PASSWORD 'vagrant' CREATEDB\""
 

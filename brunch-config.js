@@ -2,8 +2,10 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
-
+      entryPoints: {
+        "web/static/js/app.js": "js/app.js",
+        "web/static/js/admin.js": "js/admin.js"
+      }
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
       // joinTo: {
@@ -49,6 +51,10 @@ exports.config = {
     public: "priv/static"
   },
 
+  watcher: {
+    usePolling: true
+  },
+  
   // Configure your plugins
   plugins: {
     babel: {
@@ -59,11 +65,16 @@ exports.config = {
 
   modules: {
     autoRequire: {
-      "js/app.js": ["web/static/js/app"]
+      "js/app.js": ["web/static/js/app"],
+      "js/admin.js": ["web/static/js/admin"]
     }
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {
+      select2: ['dist/css/select2.css'],
+      'select2-bootstrap-theme': ['dist/select2-bootstrap.css']
+    }
   }
 };

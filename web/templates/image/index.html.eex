@@ -1,0 +1,30 @@
+<%= link "New image", to: image_path(@conn, :new) %>
+
+<%= form_tag image_path(@conn, :index), method: "get", class: "form-inline" do %>
+  <div class="form-group">
+  <label class="sr-only" for="search">Search</label>
+  <%= tag :input, type: "search", id: "search",  name: "q", class: "form-control" %>
+  </div>
+  <%= submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+<ul>
+<%= for tag <- @tags do %>
+<li><%= tag.tag %> (<%= tag.count %>)</li>
+<% end %>
+</ul>
+
+<%= for image <- @images do %>
+  <div class="tagged-image">
+    <img src="<%= image.url %>" class="" />
+    <div class="tags">
+    <%= for tag <- image.tags do %>
+      <span class="tag label label-primary"><%= tag %></span>
+    <% end %>
+    </div>
+    <div class="actions">
+    <%= link "Edit", to: image_path(@conn, :edit, image), class: "btn btn-default btn-xs" %>
+    <%= link "Delete", to: image_path(@conn, :delete, image), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'rbconfig'
+is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
+nfs = !is_windows || Vagrant.has_plugin?("vagrant-winnfsd")
+
+if is_windows && ! nfs
+  puts "The vagrant-winffsd plugin is strongly recommended when running from a windows host."
+  puts "Install via `vagrant plugin install vagrant-winffsd`"
+end
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -23,6 +31,9 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 4000, host: 4000
+  config.vm.network "private_network", type: "dhcp" if is_windows && nfs
+
+  config.vm.synced_folder ".", "/vagrant", type: 'nfs' if nfs
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

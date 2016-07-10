@@ -2095,8 +2095,13 @@
 				triggerDropdown = true;
 			}
 
-			var self              = this;
-			var query             = $.trim(self.$control_input.val());
+			var self = this;
+			var query = $.trim(self.$control_input.val());
+			if (!this.meetsMinimumSearch(query)) {
+				this.close();
+				return;
+			}
+			
 			var results           = self.search(query);
 			var $dropdown_content = self.$dropdown_content;
 			var active_before     = self.$activeOption && hash_key(self.$activeOption.attr('data-value'));
@@ -2703,7 +2708,10 @@
 		isFull: function() {
 			return this.settings.maxItems !== null && this.items.length >= this.settings.maxItems;
 		},
-
+		
+		meetsMinimumSearch: function(query) {
+			return query && query.length > 0
+		},
 		/**
 		 * Refreshes the original <select> or <input>
 		 * element to reflect the current state.
@@ -2757,7 +2765,7 @@
 		open: function() {
 			var self = this;
 
-			if (self.isLocked || self.isOpen || (self.settings.mode === 'multi' && self.isFull())) return;
+			if (self.isLocked || self.isOpen || (self.settings.mode === 'multi' && self.isFull()) || ! self.meetsMinimumSearch(this.lastQuery)) return;
 			self.focus();
 			self.isOpen = true;
 			self.refreshState();

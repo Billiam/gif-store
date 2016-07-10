@@ -10,7 +10,7 @@ defmodule Giftrap.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Logged in")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: image_path(conn, :index))
       {:error, _status, conn} ->
         conn
         |> put_flash(:error, "Wrong email or password")
@@ -22,6 +22,6 @@ defmodule Giftrap.SessionController do
     conn
     |> Giftrap.Auth.logout()
     |> put_flash(:info, "Logged out")
-    |> redirect(to: page_path(conn, :index))
+    |> redirect(to: session_path(conn, :new))
   end
 end

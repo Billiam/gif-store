@@ -1,5 +1,3 @@
-require IEx
-
 defmodule Giftrap.Image do
   use Giftrap.Web, :model
 
@@ -75,7 +73,7 @@ defmodule Giftrap.Image do
   defp filtered_tags(tags) when is_binary(tags) do
     tags = String.downcase(tags)
     |> String.replace(~r/[\s,]+/, " ")
-    |> String.replace(~r/[^ \p{L}_-]+/u, "")
+    |> String.replace(~r/[^ \p{N}\p{L}_-]+/u, "")
      
     Regex.split(~r/\s+/, tags, trim: true)
     |> Enum.map(&String.trim/1)

@@ -2,17 +2,13 @@
 
 <ul class="list-unstyled">
   <li>
-    <strong>User:</strong>
-    <%= @image.user_id %>
-  </li>
-
-  <li>
     <%= tag :img, src: @image.url %>
-    <strong>Url:</strong><%= @image.url %>
+  </li>
+  <li>
+    <%= @image.url %>
   </li>
 
   <li>
-    <strong>Tags:</strong>
     <%= for tag <- @image.tags do %>
       <span class="tag label label-primary"><%= tag %></span>
     <% end %>

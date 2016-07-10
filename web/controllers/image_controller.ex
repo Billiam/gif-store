@@ -77,7 +77,7 @@ defmodule Giftrap.ImageController do
     assoc(user, :images)
   end
   
-  defp list_images(user_id, %{"q" => terms}) when is_binary(terms) do
+  defp list_images(user_id, %{"search" => %{"q" => terms}}) when is_binary(terms) do
     list_images(user_id, %{})
     |> Image.search(terms)
   end

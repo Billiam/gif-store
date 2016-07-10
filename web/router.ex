@@ -17,11 +17,11 @@ defmodule Giftrap.Router do
   scope "/", Giftrap do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    resources "/", ImageController, only: [:index]
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     
-    resources "/images", ImageController
+    resources "/images", ImageController, except: [:index]
   end
 
   # Other scopes may use custom stacks.

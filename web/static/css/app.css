@@ -1,3 +1,76 @@
 /* This file is for your main application css. */
-@import "select2/dist/css/select2.css";
-@import "select2-bootstrap-theme/dist/select2-bootstrap.css";
+@import "third-party/selectize/selectize.bootstrap3.css";
+
+/* Layout styles */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+    max-width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+    max-width: 1170px;
+  }
+}
+.column { float: left; padding-right: 15px; box-sizing: border-box; }
+.size-1of2 { width: 50%; }
+.size-1of3 { width: 33.33333%; }
+.size-1of4 { width: 25%; }
+
+/* Override selectize padding */
+.selectize-control.multi .selectize-input > div {
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: #428bca;
+  border-color: #2e6da4;
+  color: #fff;
+}
+.selectize-control.multi .selectize-input > div.active {
+  background-color: #204d74;
+}
+.selectize-control.multi .selectize-input > div:hover {
+  background-color: #286090;
+  border-color: #337ab7;
+}
+
+.tagged-image {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+}
+.tagged-image img {
+  max-width: 100%;
+}
+.tagged-image .actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tagged-image:hover .actions {
+  opacity: 1;
+}
+.tags {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 8px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+}
+.tagged-image:hover .tags {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tags .tag {
+  margin-left: 8px;
+}
+
+.tags .tag:before {
+  content: "#"
+}

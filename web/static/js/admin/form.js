@@ -1,14 +1,21 @@
 import jQuery from "jquery"
 window.jQuery = window.$ = jQuery
-
-import sel from "select2"
+import "../../third-party/selectize/selectize"
+console.log('jquery:', $)
 
 export default {
   init() {
     $(function() {
-      $('.tag-field').select2({
-        tags: true,
-        tokenSeparators: [",", " "]
+      $('.tag-field').selectize({
+        plugins: ['remove_button'],
+        delimiter: " ",
+        persist: false,
+        create(input) {
+          return {
+            value: input,
+            text: input
+          }
+        }
       })
     })
   }

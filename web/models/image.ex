@@ -36,8 +36,35 @@ defmodule Giftrap.Image do
     from i in query,
         where: i.user_id == ^user_id
   end
-
-  def all_tags(user_id) do
+  
+  defp tag_results(result) do
+    {columns, rows} = case result do
+     {:ok, %{columns: columns, rows: rows}} -> {columns |> Enum.map(&String.to_atom/1) , rows}
+      _ -> {[], []}
+    end
+        
+    rows
+    |> Enum.map(fn row ->
+      Enum.zip(columns, row)
+      |> Enum.into(%{})
+    end)
+  end
+  
+  def find_tags(search, user_id) do
+    Ecto.Adapters.SQL.query(
+      Giftrap.Repo, 
+      "SELECT * FROM (
+        SELECT COUNT(*), UNNEST(tags) AS tag 
+          FROM images WHERE user_id = $1 
+          GROUP BY tag 
+          ORDER BY tag ASC
+       ) AS t WHERE t.tag ILIKE $2",
+       [user_id, "%#{search}%"]
+    )
+    |> tag_results
+  end
+    
+  def find_tags(user_id) do
     result = Ecto.Adapters.SQL.query(
       Giftrap.Repo, 
       "SELECT COUNT(*), UNNEST(tags) AS tag FROM images WHERE user_id = $1 GROUP BY tag ORDER BY tag ASC", [user_id]

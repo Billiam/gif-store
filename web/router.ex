@@ -12,6 +12,8 @@ defmodule Giftrap.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug Giftrap.Auth, repo: Giftrap.Repo
   end
 
   scope "/", Giftrap do
@@ -24,6 +26,11 @@ defmodule Giftrap.Router do
     resources "/images", ImageController, except: [:index]
   end
 
+  scope "/api/v1", Giftrap do
+    pipe_through :api
+    
+    resources "/tags", TagsController, only: [:index]
+  end
   # Other scopes may use custom stacks.
   # scope "/api", Giftrap do
   #   pipe_through :api

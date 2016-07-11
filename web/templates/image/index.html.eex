@@ -1,30 +1,34 @@
-<%= link "New image", to: image_path(@conn, :new) %>
-
-<%= form_for @conn, image_path(@conn, :index), [as: :search, method: "get", class: "form-horizontal"], fn f -> %>
-  <div class="form-group">
-    <%= label f, :q, "Search", class: "sr-only" %>
-    <div class="col-sm-9">
-      <%= text_input f, :q, class: "form-control tag-field" %>
-    </div>
-    <%= submit "Search", class: "btn btn-primary col-sm-3" %>
-  </div>  
-<% end %>
-
-<ul>
-<%= for tag <- @tags do %>
-<li><%= tag.tag %> (<%= tag.count %>)</li>
-<% end %>
-</ul>
+<div class="row search-nav">
+  <div class="search-nav-item col-md-2 col-xs-12 pull-right">
+    <%= link "New image", to: image_path(@conn, :new), class: "btn-block btn btn-info pull-right" %>
+  </div>
+  
+  <div class="search-nav-item col-md-6 col-xs-12">
+    <%= form_for @conn, image_path(@conn, :index), [as: :search, method: "get", class: "search-form"], fn f -> %>
+      <div class="row">
+        <div class="form-group col-xs-9">
+          <%= text_input f, :q, class: "form-control search tag-field", placeholder: "Search tags..."%>
+        </div>
+        <div class="form-group col-xs-3">
+          <%= submit "Go", class: "btn-block btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <div class="image-grid">
 <%= for image <- @images do %>
-  <div class="tagged-image">
-    <img src="<%= image.url %>" class="" />
+  <div class="grid-item grid-item-image">
+    
+    <img src="<%= image.url %>" data-clipboard-text="<%= image.url %>" class="thumb animated" />
+    
     <div class="tags">
       <%= for tag <- image.tags do %>
-        <span class="tag"><%= tag %></span>
+        <span class="tag"><%= link tag, to: tag_url(@conn, tag) %></span>
       <% end %>
     </div>
+    
     <div class="actions">
       <%= link "Edit", to: image_path(@conn, :edit, image), class: "btn btn-default btn-xs" %>
       <%= link "Delete", to: image_path(@conn, :delete, image), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>

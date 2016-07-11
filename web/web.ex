@@ -51,6 +51,7 @@ defmodule Giftrap.Web do
 
       import Giftrap.Router.Helpers
       import Giftrap.ErrorHelpers
+      import Giftrap.TagHelpers
       import Giftrap.Gettext
     end
   end

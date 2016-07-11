@@ -12,7 +12,7 @@ defmodule Giftrap.ImageController do
   
   def index(conn, params, user) do
     images = list_images(user.id, params) |> Giftrap.Repo.all
-    tags = Image.all_tags(user.id)
+    tags = Image.find_tags(user.id)
     render(conn, "index.html", images: images, tags: tags)
   end
   

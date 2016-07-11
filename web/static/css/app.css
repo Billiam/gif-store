@@ -2,19 +2,24 @@
 @import "third-party/selectize/selectize.bootstrap3.css";
 
 /* Layout styles */
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-    max-width: 970px;
-  }
+.alert:empty { display: none; }
+
+.search-nav-item {
+  margin-bottom: 20px;
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-    max-width: 1170px;
-  }
+.form-inline .form-group .search {
+  width: 500px;
 }
-.column { float: left; padding-right: 15px; box-sizing: border-box; }
+
+.image-grid {
+  margin-left: -15px;
+}
+.column {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box; 
+  padding-left: 15px;
+}
 .size-1of2 { width: 50%; }
 .size-1of3 { width: 33.33333%; }
 .size-1of4 { width: 25%; }
@@ -35,22 +40,45 @@
   border-color: #337ab7;
 }
 
-.tagged-image {
-  display: inline-block;
+.selectize-input {
+  padding: 10px 15px;
+  height: 45px;
+  line-height: 1.42857143 !important;
+}
+.selectize-input.has-items {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.selectize-input.focus {
+  box-shadow: none;
+}
+
+.grid-item {
+  overflow:hidden;
+}
+
+.grid-item-image {
+  visibility: hidden;
   position: relative;
   margin-bottom: 15px;
 }
-.tagged-image img {
-  max-width: 100%;
+.column .grid-item {
+  visibility: visible;
 }
-.tagged-image .actions {
+.image-grid > .grid-item {
+  width: 100px;
+}
+.grid-item-image img {
+  width: 100%;
+}
+.grid-item-image .actions {
   position: absolute;
   top: 10px;
   right: 10px;
   opacity: 0;
   transition: opacity 0.2s;
 }
-.tagged-image:hover .actions {
+.grid-item-image:hover .actions {
   opacity: 1;
 }
 .tags {
@@ -59,18 +87,69 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0);
-  padding: 8px;
+  padding: 4px;
   font-weight: bold;
+  font-size: 10px;
   color: rgba(255, 255, 255, 0.5);
 }
-.tagged-image:hover .tags {
+.grid-item-image:hover .tags {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .tags .tag {
   margin-left: 8px;
 }
-
+.tags .tag a {
+  color: inherit;
+}
 .tags .tag:before {
   content: "#"
+}
+.grid-item-image .tooltip.top {
+  top: 15px !important;
+}
+
+form.link {
+  display: inline;
+}
+
+.grid-item-image:hover .static-gif-canvas {
+  opacity: 0;
+}
+.animated {
+  opacity: 0;
+}
+
+/** Static gif handling */
+.static-gif-container {
+  position: relative;
+}
+.static-gif-image {
+  visibility: hidden;
+  transition: visibility 0.3s;
+  opacity: 1;
+}
+.static-gif-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.static-gif-container:hover .static-gif-image {
+  visibility: visible;
+}
+.static-gif-container:hover .static-gif-canvas {
+  opacity: 0;
+}
+
+/* App-specific static gif override behavior */
+.static-gif-container,
+.static-gif-image,
+.static-gif-canvas {
+  width: 100%;
+}
+
+.grid-item-image:hover .static-gif-image {
+  visibility: visible;
 }

@@ -2,14 +2,14 @@ import imagesLoaded from "imagesloaded"
 
 const GifPause = {}
 
-GifPause.init = selector => {
+GifPause.init = function(selector, resetSelector) {
   var images = document.querySelectorAll(selector)
   for (var i = 0, l = images.length; i < l; ++i) {
-    preProcessImage(images[i])
+    preProcessImage(images[i], resetSelector)
   }
 }
 
-const preProcessImage = image => {
+const preProcessImage = (image, resetSelector) => {
   var container = document.createElement('div')
   var canvas = document.createElement('canvas')
   
@@ -22,23 +22,37 @@ const preProcessImage = image => {
   container.appendChild(image)
   container.appendChild(canvas)
   
+  if (resetSelector) {
+    attachGifReset(image, resetSelector)
+  }
+  
   imagesLoaded(image, () => {
-    processImage(image, container, canvas)
+    processImage(image, canvas)
   })
 }
 
-const processImage = (image, container, canvas) => {
+const attachGifReset = (image, selector) => {
+  var element = closest(image, el => el.classList.contains(selector))
+  if ( ! element) {
+    return
+  }
+
+  element.addEventListener('mouseenter', (e) => {
+    image.setAttribute('src', image.getAttribute('src'))
+  })
+}
+
+const closest = (el, callback) => {
+  return el && (callback(el) ? el : closest(el.parentNode, callback));
+}
+
+const processImage = (image, canvas) => {
   var h = image.clientHeight
   var w = image.clientWidth
   
   canvas.setAttribute('width', w)
   canvas.setAttribute('height', h)
   canvas.getContext('2d').drawImage(image, 0, 0, w, h)
-  
-  container.addEventListener('mouseover', () => {
-    console.log('hover')
-    image.setAttribute('src', image.getAttribute('src'))
-  })
 }
 
 export default GifPause

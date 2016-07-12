@@ -10,6 +10,7 @@ export default {
   
   initClipboard() {
     var clipboard = new Clipboard(".thumb")
+    
     clipboard.on('success', e => {
       jQuery(e.trigger).tooltip({ title: "Copied!" }).tooltip('show').on("hidden.bs.tooltip", function() {
         $(this).tooltip('destroy')
@@ -19,7 +20,7 @@ export default {
   
   initGifpause() {
     jQuery(() => {
-      GifPause.init(".animated")
+      GifPause.init(".animated", "grid-item-image")
     })
   }
 }

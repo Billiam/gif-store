@@ -1,5 +1,4 @@
 /* This file is for your main application css. */
-@import "third-party/selectize/selectize.bootstrap3.css";
 
 /* Layout styles */
 .alert:empty { display: none; }
@@ -35,9 +34,8 @@
 .selectize-control.multi .selectize-input > div.active {
   background-color: #204d74;
 }
-.selectize-control.multi .selectize-input > div:hover {
+.selectize-control.multi .selectize-input > div .remove:hover {
   background-color: #286090;
-  border-color: #337ab7;
 }
 
 .selectize-input {
@@ -45,12 +43,15 @@
   height: 45px;
   line-height: 1.42857143 !important;
 }
-.selectize-input.has-items {
+.selectize-control.multi .selectize-input.has-items {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 .selectize-input.focus {
   box-shadow: none;
+}
+.selectize-control.plugin-remove_button [data-value] .remove {
+  border-left-color: #6FA1CD;
 }
 
 .grid-item {
@@ -112,10 +113,6 @@
 form.link {
   display: inline;
 }
-
-.grid-item-image:hover .static-gif-canvas {
-  opacity: 0;
-}
 .animated {
   opacity: 0;
 }
@@ -134,13 +131,17 @@ form.link {
   top: 0;
   left: 0;
   opacity: 1;
-  transition: opacity 0.3s;
+  visibility: visible;
+  transition: opacity 0.3s, visibility 0.3s
 }
 .static-gif-container:hover .static-gif-image {
   visibility: visible;
+  transition: visibility 0s;
 }
 .static-gif-container:hover .static-gif-canvas {
   opacity: 0;
+  visibility: hidden;
+  transition: opacity 0s, visibility 0s;
 }
 
 /* App-specific static gif override behavior */
@@ -149,7 +150,13 @@ form.link {
 .static-gif-canvas {
   width: 100%;
 }
-
+/* Override hover trigger element for static images */
 .grid-item-image:hover .static-gif-image {
   visibility: visible;
+  transition: visibility 0s;
+}
+.grid-item-image:hover .static-gif-canvas {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0s, visibility 0s;
 }

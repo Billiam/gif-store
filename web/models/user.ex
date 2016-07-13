@@ -6,11 +6,12 @@ defmodule Giftrap.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :role, :string
     has_many :images, Giftrap.Image
     
     timestamps()
   end
-
+  
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """

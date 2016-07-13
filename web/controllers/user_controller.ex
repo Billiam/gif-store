@@ -3,7 +3,8 @@ defmodule Giftrap.UserController do
   alias Giftrap.User
 
   plug Giftrap.Authenticated
-
+  plug :authorize
+  
   def index(conn, _params) do
     users = Repo.all(User)
     render(conn, "index.html", users: users)
@@ -60,5 +61,15 @@ defmodule Giftrap.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+  
+  defp authorize(conn, _) do
+    case conn.assigns.current_user.role do
+      "admin" -> conn
+        _ -> conn
+             |> put_flash(:error, "Unathorized, sorry")
+             |> redirect(to: image_path(conn, :index))
+             |> halt()
+    end
   end
 end

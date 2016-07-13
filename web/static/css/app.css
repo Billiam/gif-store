@@ -40,7 +40,7 @@
 
 .selectize-input {
   padding: 10px 15px;
-  height: 45px;
+  min-height: 45px;
   line-height: 1.42857143 !important;
 }
 .selectize-control.multi .selectize-input.has-items {

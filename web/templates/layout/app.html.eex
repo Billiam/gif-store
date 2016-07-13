@@ -9,6 +9,7 @@
 
     <title>Giftrap</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
   </head>
 
   <body>
@@ -24,7 +25,7 @@
           </ul>
         </nav>
         
-        <h1><%= link "Giftrap", to: image_path(@conn, :index) %></h1>
+        <h1 class="heading"><%= link "giftrap", to: image_path(@conn, :index) %></h1>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

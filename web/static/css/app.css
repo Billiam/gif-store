@@ -1,5 +1,14 @@
 /* This file is for your main application css. */
 
+.heading {
+  font-size: 70px;
+  font-family: 'Monoton', cursive;
+}
+
+.heading:hover a {
+  text-decoration: none;
+}
+
 /* Layout styles */
 .alert:empty { display: none; }
 

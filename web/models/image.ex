@@ -4,6 +4,7 @@ defmodule Giftrap.Image do
   schema "images" do
     field :url, :string
     field :tags, {:array, :string}
+    field :clicks, :integer
     field :tag_list, :string, virtual: true
     belongs_to :user, Giftrap.User
 

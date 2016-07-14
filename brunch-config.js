@@ -3,8 +3,7 @@ exports.config = {
   files: {
     javascripts: {
       entryPoints: {
-        "web/static/js/app.js": "js/app.js",
-        "web/static/js/admin.js": "js/admin.js"
+        "web/static/js/app.js": "js/app.js"
       }
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
@@ -36,7 +35,10 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: new RegExp("^web/static/assets")
+    assets: [
+      new RegExp("^web/static/assets")
+      // new RegExp("node_modules/bootstrap")
+    ]
   },
 
   // Phoenix paths configuration
@@ -60,13 +62,15 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [new RegExp("web/static/(vendor|third-party)")]
+    },
+    copycat: {
+      "fonts": ["node_modules/bootstrap/fonts/"]
     }
   },
 
   modules: {
     autoRequire: {
       "js/app.js": ["web/static/js/app"],
-      "js/admin.js": ["web/static/js/admin"]
     }
   },
 
@@ -76,7 +80,8 @@ exports.config = {
       bootstrap: ['dist/css/bootstrap.css']
     },
     globals: { 
-      jQuery: 'jquery', 
+      jQuery: 'jquery',
+      $: 'jquery',
       imagesLoaded: 'imagesloaded'
     }
   }

@@ -1,5 +1,4 @@
-import jQuery from "jquery"
-window.jQuery = window.$ = jQuery
+import $ from "jquery"
 import "../../third-party/selectize/selectize"
 
 export default {

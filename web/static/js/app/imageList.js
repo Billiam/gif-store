@@ -15,11 +15,17 @@ export default {
       jQuery(e.trigger).tooltip({ title: "Copied!" }).tooltip('show').on("hidden.bs.tooltip", function() {
         $(this).tooltip('destroy')
       })
+      
+      var $el = jQuery(e.trigger)
+      var id = parseInt($el.data('id'))
+      if (id) {
+        jQuery.post(`api/v1/images/${id}/click`)
+      }
     })
   },
   
   initGifpause() {
-    jQuery(() => {
+    jQuery(document).ready(function() {
       GifPause.init(".animated", "grid-item-image")
     })
   }

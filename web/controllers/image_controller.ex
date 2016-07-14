@@ -73,6 +73,15 @@ defmodule Giftrap.ImageController do
     |> redirect(to: image_path(conn, :index))
   end
   
+  def click(conn, %{"id" => id}, user) do
+  
+   user_images(user)
+   |> where([i], i.id == ^id)
+   |> Repo.update_all(inc: [clicks: 1])
+    
+    render(conn, "click.json")
+  end
+  
   defp user_images(user) do
     assoc(user, :images)
   end

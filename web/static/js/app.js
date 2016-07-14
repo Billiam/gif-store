@@ -11,7 +11,21 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+
+import "jquery"
+import "bootstrap/dist/js/bootstrap"
+
+import Form from "./app/form.js"
+import Bricks from "./app/bricks.js"
+import ImageList from "./app/imageList.js"
+import Confirmable from "./app/confirmable.js"
+
+(function() {
+  ImageList.init()
+  Bricks.init()
+  Form.init()
+  Confirmable.init()
+})()
 
 // Import local files
 //

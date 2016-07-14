@@ -30,9 +30,6 @@ defmodule Giftrap.Router do
     pipe_through :api
     
     resources "/tags", TagsController, only: [:index]
+    post "/images/:id/click", ImageController, :click
   end
-  # Other scopes may use custom stacks.
-  # scope "/api", Giftrap do
-  #   pipe_through :api
-  # end
 end

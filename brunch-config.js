@@ -65,6 +65,9 @@ exports.config = {
     },
     copycat: {
       "fonts": ["node_modules/bootstrap/fonts/"]
+    },
+    cleancss: {
+      advanced: false
     }
   },
 

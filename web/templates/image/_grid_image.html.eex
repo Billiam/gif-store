@@ -1,0 +1,19 @@
+<div class="grid-item grid-item-image">
+  <img src="<%= @image.url %>" data-clipboard-text="<%= @image.url %>" data-id="<%= @image.id %>" class="thumb animated" />
+  
+  <div class="tags">
+    <%= for tag <- @image.tags do %>
+      <span class="tag"><%= link tag, to: tag_url(@conn, tag) %></span>
+    <% end %>
+  </div>
+  
+  <div class="actions">
+    <div class="dropdown">
+      <span class="option-menu btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-cog"></span>
+      </span>
+      
+      <%= render Giftrap.ImageView, "_image_menu.html", conn: @conn, image: @image %>
+    </div>
+  </div>
+</div>

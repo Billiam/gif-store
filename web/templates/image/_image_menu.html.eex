@@ -1,0 +1,11 @@
+<ul class="dropdown-menu dropdown-menu-right dropdown-menu-icon">
+  <li><%= link to: image_path(@conn, :edit, @image), title: "Edit", "aria-label": "Edit" do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    <% end %>
+  </li>
+  <li>
+    <%= link to: image_path(@conn, :delete, @image), method: :delete, data: [confirm: "Are you sure?"], title: "Delete", "aria-label": "Delete", class: "list-group-item list-group-item-danger" do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </li>
+</ul>

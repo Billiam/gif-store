@@ -23,7 +23,7 @@ defmodule Giftrap.Router do
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     
-    resources "/images", ImageController, except: [:index]
+    resources "/images", ImageController, except: [:index, :show]
   end
 
   scope "/api/v1", Giftrap do

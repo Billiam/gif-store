@@ -39,11 +39,6 @@ defmodule Giftrap.ImageController do
     end
   end
 
-  def show(conn, %{"id" => id}, user) do
-    image = Repo.get!(user_images(user), id)
-    render(conn, "show.html", image: image)
-  end
-
   def edit(conn, %{"id" => id}, user) do
     image = Repo.get!(user_images(user), id) |> Image.populate
     changeset = Image.changeset(image)
@@ -58,7 +53,7 @@ defmodule Giftrap.ImageController do
       {:ok, image} ->
         conn
         |> put_flash(:info, "Image updated successfully.")
-        |> redirect(to: image_path(conn, :show, image))
+        |> redirect(to: image_path(conn, :edit, image))
       {:error, changeset} ->
         render(conn, "edit.html", image: Image.populate(image), changeset: changeset)
     end

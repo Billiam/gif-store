@@ -1,13 +1,27 @@
 import Clipboard from "clipboard"
 import jQuery from "jquery"
 import GifPause from "../../lib/gifpause"
+import LazyImages from "../../lib/lazyImages"
+
+import Bricks from "./bricks.js"
+
 
 export default {
   init() {
     this.initClipboard()
-    this.initGifpause()
+    this.initLazyImages()
+    this.initBricks()
   },
   
+  initLazyImages() {
+    var lazyLoader = LazyImages('.lazy', 100, this.pauseGif)
+    lazyLoader.init()
+
+    jQuery(window).on('savvior:setup', () => {
+      lazyLoader.processVisible()
+    })
+  },
+
   initClipboard() {
     var clipboard = new Clipboard(".thumb")
     
@@ -24,9 +38,11 @@ export default {
     })
   },
   
-  initGifpause() {
-    jQuery(document).ready(function() {
-      GifPause.init(".animated", "grid-item-image")
-    })
+  pauseGif($element) {
+    GifPause.processImage($element.get(0), "grid-item-image")
+  },
+  
+  initBricks() {
+    Bricks.init()
   }
 }

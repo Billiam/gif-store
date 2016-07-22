@@ -1,5 +1,5 @@
 <div class="grid-item grid-item-image">
-  <img src="<%= @image.url %>" data-clipboard-text="<%= @image.url %>" data-id="<%= @image.id %>" class="thumb animated" />
+  <img data-src= "<%= @image.url %>" data-clipboard-text="<%= @image.url %>" data-id="<%= @image.id %>" class="lazy thumb animated" />
   
   <div class="tags">
     <%= for tag <- @image.tags do %>

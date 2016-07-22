@@ -5,11 +5,11 @@ const GifPause = {}
 GifPause.init = function(selector, resetSelector) {
   var images = document.querySelectorAll(selector)
   for (var i = 0, l = images.length; i < l; ++i) {
-    preProcessImage(images[i], resetSelector)
+    this.processImage(images[i], resetSelector)
   }
 }
 
-const preProcessImage = (image, resetSelector) => {
+GifPause.processImage = (image, resetSelector) => {
   var container = document.createElement('div')
   var canvas = document.createElement('canvas')
   

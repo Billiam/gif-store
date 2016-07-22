@@ -47,9 +47,9 @@ const closest = (el, callback) => {
 }
 
 const processImage = (image, canvas) => {
-  var h = image.clientHeight
-  var w = image.clientWidth
-  
+  var h = image.naturalHeight
+  var w = image.naturalWidth
+
   canvas.setAttribute('width', w)
   canvas.setAttribute('height', h)
   canvas.getContext('2d').drawImage(image, 0, 0, w, h)

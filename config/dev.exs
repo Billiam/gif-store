@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :giftrap, Giftrap.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "vagrant",
-  password: "vagrant",
-  database: "vagrant_giftrap",
-  hostname: "localhost",
+  username: "root",
+#  password: "vagrant",
+  database: "giftrap_development",
+  hostname: "db",
   pool_size: 10

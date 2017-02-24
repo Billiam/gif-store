@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: "root"
+  
+  app:
+    build: .
+    volumes:
+      - .:/src/gifs:Z
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"

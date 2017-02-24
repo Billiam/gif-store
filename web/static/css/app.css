@@ -71,6 +71,7 @@
   visibility: hidden;
   position: relative;
   margin-bottom: 15px;
+  min-height: 100px;
 }
 .column .grid-item {
   visibility: visible;

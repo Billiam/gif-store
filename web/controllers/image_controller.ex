@@ -87,7 +87,9 @@ defmodule Giftrap.ImageController do
   end
     
   defp list_images(user_id, _) do
-    Image |>
-    Image.by_user(user_id)
+    Image
+    |> Image.by_user(user_id)
+    |> order_by(desc: :inserted_at)
+
   end
 end

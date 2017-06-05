@@ -36,7 +36,8 @@ defmodule Giftrap.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_giftrap_key",
-    signing_salt: "RqWnsz/w"
+    signing_salt: "RqWnsz/w",
+    max_age: 60*60*24*30
 
   plug Giftrap.Router
 end

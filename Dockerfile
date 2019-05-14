@@ -1,4 +1,4 @@
-FROM elixir:1.4.1
+FROM elixir:1.4.5
 
 WORKDIR /src/gifs
 
